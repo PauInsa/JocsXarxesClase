@@ -1,6 +1,7 @@
 #include <conio.h>
 #include <iostream>
 #include <SFML/Network.hpp>
+#include "ConsoleControl.h"
 
 void RunClient();
 void RunServer();
@@ -15,10 +16,7 @@ int main()
 
     do
     {
-        if (_kbhit())
-        {
-            mode = _getch();
-        }
+        mode = ConsoleControl::WaitForReadNextChar();
     } while (mode != 'C' && mode != 'c' && mode != 'S' && mode != 's');
 
     switch (mode) {

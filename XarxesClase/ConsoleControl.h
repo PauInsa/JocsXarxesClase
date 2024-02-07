@@ -49,8 +49,8 @@ public:
 	static void Wait(unsigned long milisecons);
 
 	static int ReadNextKey();
-	static int WaithForReadNextKey();
-	static char WaithForReadNextChar();
+	static int WaitForReadNextKey();
+	static char WaitForReadNextChar();
 
 	static void LockMutex();
 	static void UnlockMutex();
