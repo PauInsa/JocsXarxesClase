@@ -1,6 +1,3 @@
-﻿sfml-system-s-d.lib(String.obj) : warning LNK4099: PDB '' was not found with 'sfml-system-s-d.lib(String.obj)' or at ''; linking object as if no debug info
-sfml-network-s-d.lib(Http.obj) : warning LNK4099: PDB '' was not found with 'sfml-network-s-d.lib(Http.obj)' or at ''; linking object as if no debug info
-sfml-network-s-d.lib(IpAddress.obj) : warning LNK4099: PDB '' was not found with 'sfml-network-s-d.lib(IpAddress.obj)' or at ''; linking object as if no debug info
-sfml-network-s-d.lib(Packet.obj) : warning LNK4099: PDB '' was not found with 'sfml-network-s-d.lib(Packet.obj)' or at ''; linking object as if no debug info
-sfml-network-s-d.lib(TcpSocket.obj) : warning LNK4099: PDB '' was not found with 'sfml-network-s-d.lib(TcpSocket.obj)' or at ''; linking object as if no debug info
+﻿  Chat.cpp
+C:\Users\PauInsaFajardo\Desktop\Xarxes\JocsXarxesClase\XarxesClase\ConsoleControl.h(57,2): warning C4091: 'static ': ignored on left of 'ConsoleControl' when no variable is declared
   XarxesClase.vcxproj -> C:\Users\PauInsaFajardo\Desktop\Xarxes\JocsXarxesClase\XarxesClase\Debug\XarxesClase.exe
