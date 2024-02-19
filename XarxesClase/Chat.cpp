@@ -110,22 +110,18 @@ void Chat::ListenMessages(sf::TcpSocket* socket)
 {
     while (true)
     {
-        char data[100] = {};
-        std::size_t received;
+        sf::Packet packet;
 
         std::string message;
 
-        if (socket->receive(data, 100, received) != sf::Socket::Done)
+        if (socket->receive(packet) != sf::Socket::Done)
         {
             ShowError("Error sending message");
         }
         else
         {
-            for (size_t i = 0; i < received; i++)
-            {
-                char c = data[i];
-                message += c;
-            }
+            packet >> message;
+
             ShowMessage(message);
 
 
@@ -172,21 +168,14 @@ void Chat::ListenKeyboardToSendMessage()
 
 void Chat::SendMessage(std::string message)
 {
-    char data[100] = {};
-
-    int stringSize = message.length();
-
-    for (int i = 0; i < stringSize; i++)
-    {
-        char c = message[i];
-        data[i] = c;
-    }    
+    sf::Packet packet;
+    packet << message;
 
     _socketMutex.lock();
 
     for (sf::TcpSocket* socket : _sockets)
     {
-        if (socket->send(data, 100) != sf::Socket::Done)
+        if (socket->send(packet) != sf::Socket::Done)
         {
             ShowError("Error sending message");
         }

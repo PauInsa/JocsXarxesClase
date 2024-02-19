@@ -141,11 +141,21 @@
   <ItemGroup>
     <ClCompile Include="Chat.cpp" />
     <ClCompile Include="ConsoleControl.cpp" />
+    <ClCompile Include="CnnectionAbstraction\SocketsManager.cpp" />
+    <ClCompile Include="CnnectionAbstraction\Packet.cpp" />
+    <ClCompile Include="CnnectionAbstraction\TcpSocket.cpp" />
+    <ClCompile Include="CnnectionAbstraction\TcpListener.cpp" />
+    <ClCompile Include="CnnectionAbstraction\SocketSelector.cpp" />
     <ClCompile Include="XarxesClase.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Chat.h" />
     <ClInclude Include="ConsoleControl.h" />
+    <ClInclude Include="CnnectionAbstraction\SocketsManager.h" />
+    <ClInclude Include="CnnectionAbstraction\Packet.h" />
+    <ClInclude Include="CnnectionAbstraction\TcpSocket.h" />
+    <ClInclude Include="CnnectionAbstraction\TcpListener.h" />
+    <ClInclude Include="CnnectionAbstraction\SocketSelector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
