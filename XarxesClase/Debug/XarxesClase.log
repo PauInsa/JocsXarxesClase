@@ -1,3 +1,20 @@
 ﻿  Chat.cpp
 C:\Users\PauInsaFajardo\Desktop\Xarxes\JocsXarxesClase\XarxesClase\ConsoleControl.h(57,2): warning C4091: 'static ': ignored on left of 'ConsoleControl' when no variable is declared
+  SocketsManager.cpp
+  Packet.cpp
+  TcpSocket.cpp
+  TcpListener.cpp
+  SocketSelector.cpp
+  Generating Code...
+sfml-system-s-d.lib(Err.obj) : warning LNK4099: PDB '' was not found with 'sfml-system-s-d.lib(Err.obj)' or at ''; linking object as if no debug info
+sfml-system-s-d.lib(String.obj) : warning LNK4099: PDB '' was not found with 'sfml-system-s-d.lib(String.obj)' or at ''; linking object as if no debug info
+sfml-system-s-d.lib(Time.obj) : warning LNK4099: PDB '' was not found with 'sfml-system-s-d.lib(Time.obj)' or at ''; linking object as if no debug info
+sfml-network-s-d.lib(Http.obj) : warning LNK4099: PDB '' was not found with 'sfml-network-s-d.lib(Http.obj)' or at ''; linking object as if no debug info
+sfml-network-s-d.lib(IpAddress.obj) : warning LNK4099: PDB '' was not found with 'sfml-network-s-d.lib(IpAddress.obj)' or at ''; linking object as if no debug info
+sfml-network-s-d.lib(Packet.obj) : warning LNK4099: PDB '' was not found with 'sfml-network-s-d.lib(Packet.obj)' or at ''; linking object as if no debug info
+sfml-network-s-d.lib(Socket.obj) : warning LNK4099: PDB '' was not found with 'sfml-network-s-d.lib(Socket.obj)' or at ''; linking object as if no debug info
+sfml-network-s-d.lib(SocketSelector.obj) : warning LNK4099: PDB '' was not found with 'sfml-network-s-d.lib(SocketSelector.obj)' or at ''; linking object as if no debug info
+sfml-network-s-d.lib(TcpListener.obj) : warning LNK4099: PDB '' was not found with 'sfml-network-s-d.lib(TcpListener.obj)' or at ''; linking object as if no debug info
+sfml-network-s-d.lib(TcpSocket.obj) : warning LNK4099: PDB '' was not found with 'sfml-network-s-d.lib(TcpSocket.obj)' or at ''; linking object as if no debug info
+sfml-network-s-d.lib(SocketImpl.obj) : warning LNK4099: PDB '' was not found with 'sfml-network-s-d.lib(SocketImpl.obj)' or at ''; linking object as if no debug info
   XarxesClase.vcxproj -> C:\Users\PauInsaFajardo\Desktop\Xarxes\JocsXarxesClase\XarxesClase\Debug\XarxesClase.exe

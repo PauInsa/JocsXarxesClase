@@ -1,3 +1,8 @@
 C:\Users\PauInsaFajardo\Desktop\Xarxes\JocsXarxesClase\XarxesClase\Chat.cpp;C:\Users\PauInsaFajardo\Desktop\Xarxes\JocsXarxesClase\XarxesClase\Debug\Chat.obj
 C:\Users\PauInsaFajardo\Desktop\Xarxes\JocsXarxesClase\XarxesClase\ConsoleControl.cpp;C:\Users\PauInsaFajardo\Desktop\Xarxes\JocsXarxesClase\XarxesClase\Debug\ConsoleControl.obj
+C:\Users\PauInsaFajardo\Desktop\Xarxes\JocsXarxesClase\XarxesClase\CnnectionAbstraction\SocketsManager.cpp;C:\Users\PauInsaFajardo\Desktop\Xarxes\JocsXarxesClase\XarxesClase\Debug\SocketsManager.obj
+C:\Users\PauInsaFajardo\Desktop\Xarxes\JocsXarxesClase\XarxesClase\CnnectionAbstraction\Packet.cpp;C:\Users\PauInsaFajardo\Desktop\Xarxes\JocsXarxesClase\XarxesClase\Debug\Packet.obj
+C:\Users\PauInsaFajardo\Desktop\Xarxes\JocsXarxesClase\XarxesClase\CnnectionAbstraction\TcpSocket.cpp;C:\Users\PauInsaFajardo\Desktop\Xarxes\JocsXarxesClase\XarxesClase\Debug\TcpSocket.obj
+C:\Users\PauInsaFajardo\Desktop\Xarxes\JocsXarxesClase\XarxesClase\CnnectionAbstraction\TcpListener.cpp;C:\Users\PauInsaFajardo\Desktop\Xarxes\JocsXarxesClase\XarxesClase\Debug\TcpListener.obj
+C:\Users\PauInsaFajardo\Desktop\Xarxes\JocsXarxesClase\XarxesClase\CnnectionAbstraction\SocketSelector.cpp;C:\Users\PauInsaFajardo\Desktop\Xarxes\JocsXarxesClase\XarxesClase\Debug\SocketSelector.obj
 C:\Users\PauInsaFajardo\Desktop\Xarxes\JocsXarxesClase\XarxesClase\XarxesClase.cpp;C:\Users\PauInsaFajardo\Desktop\Xarxes\JocsXarxesClase\XarxesClase\Debug\XarxesClase.obj
