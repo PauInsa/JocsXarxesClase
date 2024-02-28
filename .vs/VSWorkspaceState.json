@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\XarxesClase"
+    "\\XarxesClase",
+    "\\XarxesClase\\ConnectionAbstraction"
   ],
-  "SelectedNode": "\\XarxesClase\\Debug",
+  "SelectedNode": "\\XarxesClase\\ConnectionAbstraction\\SocketsManager.cpp",
   "PreviewInSolutionExplorer": false
 }
