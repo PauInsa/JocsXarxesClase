@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\XarxesClase",
-    "\\XarxesClase\\ConnectionAbstraction"
+    "\\XarxesClase\\ConnectionAbstraction",
+    "\\XarxesClase\\WindowsHelpers"
   ],
-  "SelectedNode": "\\XarxesClase\\ConnectionAbstraction\\SocketsManager.cpp",
+  "SelectedNode": "\\XarxesClase\\XarxesClase.cpp",
   "PreviewInSolutionExplorer": false
 }
