@@ -140,6 +140,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Chat.cpp" />
+    <ClCompile Include="ConnectionAbstraction\UDP\UdpAdress.cpp" />
+    <ClCompile Include="ConnectionAbstraction\UDP\UdpPacket.cpp" />
     <ClCompile Include="ConsoleControl.cpp" />
     <ClCompile Include="ConnectionAbstraction\SocketsManager.cpp" />
     <ClCompile Include="ConnectionAbstraction\Packet.cpp" />
@@ -152,6 +154,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Chat.h" />
+    <ClInclude Include="ConnectionAbstraction\ICodable.h" />
+    <ClInclude Include="ConnectionAbstraction\UDP\UdpAdress.h" />
+    <ClInclude Include="ConnectionAbstraction\UDP\UdpConnection.h" />
+    <ClInclude Include="ConnectionAbstraction\UDP\UdpPacket.h" />
+    <ClInclude Include="ConnectionAbstraction\UDP\UdpSocket.h" />
     <ClInclude Include="ConsoleControl.h" />
     <ClInclude Include="ConnectionAbstraction\SocketsManager.h" />
     <ClInclude Include="ConnectionAbstraction\Packet.h" />
