@@ -52,5 +52,23 @@ void UdpPacket::Decode(sf::Packet& packet)
 {
 	size_t size;
 	packet >> size;
-	this->append(this->getData(), size);
+
+	const void* fullData = packet.getData();
+	const char* fullDataChar = static_cast<const char*>(fullData);
+	void* newData = malloc(size);
+
+	if (newData != nullptr)
+	{
+		std::memcpy(newData, fullDataChar + packet.getReadPosition(), size);
+
+		for (size_t i = 0; i < size; i++)
+		{
+			bool unit;
+			packet >> unit;
+		}
+	}
+
+	append(newData, size);
+
+	free(newData);
 }

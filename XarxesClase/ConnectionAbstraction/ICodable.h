@@ -25,9 +25,11 @@ inline sf::Packet& operator >>(sf::Packet& packet, ICodable& codable)
 //Només validar la template si T és filla de ICodable (valida el tipus)
 //Saber 100% segur que tots els valors amb què treballem dins seran ICodable
 //D'aquesta manera, T tindrà Code i Decode
-template<typename T, typename = typename std::enable_if<std::is_base_of<ICodable, T>::value>::type>
+template<class T>
 class CPVector : public std::vector<T*>, public ICodable
 {
+	static_assert(std::is_base_of<ICodable, T>::value, "T must inherit from ICodable");
+
 	virtual void Code (sf::Packet& packet) override
 	{
 		sf::Uint64 count = this->size();
@@ -48,7 +50,7 @@ class CPVector : public std::vector<T*>, public ICodable
 		for (sf::Uint64 i = 0; i < count; i++)
 		{
 			T* item = new T();
-			reinterpret_cast<ICodable*>(item)->Decode(packet);
+			dynamic_cast<ICodable*>(item)->Decode(packet);
 			this->push_back(item);
 		}
 	}
