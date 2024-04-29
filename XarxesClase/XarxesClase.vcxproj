@@ -141,7 +141,9 @@
   <ItemGroup>
     <ClCompile Include="Chat.cpp" />
     <ClCompile Include="ConnectionAbstraction\UDP\UdpAdress.cpp" />
+    <ClCompile Include="ConnectionAbstraction\UDP\UdpConnection.cpp" />
     <ClCompile Include="ConnectionAbstraction\UDP\UdpPacket.cpp" />
+    <ClCompile Include="ConnectionAbstraction\UDP\UdpSocket.cpp" />
     <ClCompile Include="ConsoleControl.cpp" />
     <ClCompile Include="ConnectionAbstraction\SocketsManager.cpp" />
     <ClCompile Include="ConnectionAbstraction\Packet.cpp" />

@@ -49,10 +49,10 @@ bool TcpSocket::Send(Packet::PacketKey key, Packet packet)
 	return send(signedPacket) == sf::Socket::Done;
 }
 
-void TcpSocket::Subscribe(Packet::PacketKey key, OnReceivePacket onReveivePacket)
+void TcpSocket::Subscribe(Packet::PacketKey key, OnReceivePacket onReceivePacket)
 {
 	_subscriptionsMutex.lock();
-	_subscriptions[key] = onReveivePacket;
+	_subscriptions[key] = onReceivePacket;
 	_subscriptionsMutex.unlock();
 }
 

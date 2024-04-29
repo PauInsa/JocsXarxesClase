@@ -1,15 +1,22 @@
 #pragma once
 #include <string>
+#include "../ICodable.h"
 
 
-class UdpAdress {
+class UdpAddress: public ICodable {
 public:
-	typedef unsigned short PortNUmber;
+	typedef unsigned short PortNumber;
 
 public:
 	std::string ip = "";
-	PortNUmber port = 0;
+	PortNumber port = 0;
+
+	UdpAddress() = default;
+	UdpAddress(std::string ip, PortNumber port);
 
 	std::string Tostring();
+
+	void Code(sf::Packet& packet) override;
+	void Decode(sf::Packet& packet) override;
 
 };

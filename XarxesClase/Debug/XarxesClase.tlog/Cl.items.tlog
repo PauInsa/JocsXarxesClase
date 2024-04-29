@@ -1,6 +1,8 @@
 C:\Users\PauInsaFajardo\Desktop\Xarxes\JocsXarxesClase\XarxesClase\Chat.cpp;C:\Users\PauInsaFajardo\Desktop\Xarxes\JocsXarxesClase\XarxesClase\Debug\Chat.obj
 C:\Users\PauInsaFajardo\Desktop\Xarxes\JocsXarxesClase\XarxesClase\ConnectionAbstraction\UDP\UdpAdress.cpp;C:\Users\PauInsaFajardo\Desktop\Xarxes\JocsXarxesClase\XarxesClase\Debug\UdpAdress.obj
+C:\Users\PauInsaFajardo\Desktop\Xarxes\JocsXarxesClase\XarxesClase\ConnectionAbstraction\UDP\UdpConnection.cpp;C:\Users\PauInsaFajardo\Desktop\Xarxes\JocsXarxesClase\XarxesClase\Debug\UdpConnection.obj
 C:\Users\PauInsaFajardo\Desktop\Xarxes\JocsXarxesClase\XarxesClase\ConnectionAbstraction\UDP\UdpPacket.cpp;C:\Users\PauInsaFajardo\Desktop\Xarxes\JocsXarxesClase\XarxesClase\Debug\UdpPacket.obj
+C:\Users\PauInsaFajardo\Desktop\Xarxes\JocsXarxesClase\XarxesClase\ConnectionAbstraction\UDP\UdpSocket.cpp;C:\Users\PauInsaFajardo\Desktop\Xarxes\JocsXarxesClase\XarxesClase\Debug\UdpSocket.obj
 C:\Users\PauInsaFajardo\Desktop\Xarxes\JocsXarxesClase\XarxesClase\ConsoleControl.cpp;C:\Users\PauInsaFajardo\Desktop\Xarxes\JocsXarxesClase\XarxesClase\Debug\ConsoleControl.obj
 C:\Users\PauInsaFajardo\Desktop\Xarxes\JocsXarxesClase\XarxesClase\ConnectionAbstraction\SocketsManager.cpp;C:\Users\PauInsaFajardo\Desktop\Xarxes\JocsXarxesClase\XarxesClase\Debug\SocketsManager.obj
 C:\Users\PauInsaFajardo\Desktop\Xarxes\JocsXarxesClase\XarxesClase\ConnectionAbstraction\Packet.cpp;C:\Users\PauInsaFajardo\Desktop\Xarxes\JocsXarxesClase\XarxesClase\Debug\Packet.obj

@@ -1,5 +1,2 @@
-﻿  UdpPacket.cpp
-  XarxesClase.cpp
-C:\Users\PauInsaFajardo\Desktop\Xarxes\JocsXarxesClase\XarxesClase\ConsoleControl.h(57,2): warning C4091: 'static ': ignored on left of 'ConsoleControl' when no variable is declared
-  Generating Code...
+﻿  UdpAdress.cpp
   XarxesClase.vcxproj -> C:\Users\PauInsaFajardo\Desktop\Xarxes\JocsXarxesClase\XarxesClase\Debug\XarxesClase.exe

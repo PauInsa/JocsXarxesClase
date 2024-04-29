@@ -60,7 +60,7 @@ int main()
     //p1 >> cd1type >> cd1Key >> cd1;
     //p2 >> cd2type >> cd2Key >> cd2;
 
-    CPVector<UdpPacket> packets;
+    /*CPVector<UdpPacket> packets;
     packets.push_back(&p1);
     packets.push_back(&p2);
 
@@ -86,7 +86,7 @@ int main()
         *packet >> codable;
 
         codablesReaded.push_back(codable);
-    }
+    }*/
 
     std::cout << "Select" << std::endl << "Client -> C" << std::endl << "Server -> S" << std::endl;
 
@@ -125,9 +125,29 @@ int main()
 
 void RunClient() {
     
+    std::cout << "Client";
+    std::cout << std::endl << "Set server IP -->";
+
+    std::string ip;
+    std::getline(std::cin, ip);
+
+    UdpSocket* clientSocket = new UdpSocket(port + 1, [](UdpConnection* connection) {
+        std::cout << "New Connection: " << connection->GetAddress().Tostring() << std::endl;
+        });
+
+    std::cout << "Client On: " << clientSocket->GetAddress().Tostring() << std::endl;
+    clientSocket->ConnectTo(UdpAddress(ip, port));
+
 }
 
 void RunServer() {
+    std::cout << "Server";
+
+    UdpSocket* serverSocket = new UdpSocket(port, [](UdpConnection* connection) {
+        std::cout << "New Connection: " << connection->GetAddress().Tostring() << std::endl;
+        });
+
+    std::cout << "Server On: " << serverSocket->GetAddress().Tostring() << std::endl;
    
 }
 
