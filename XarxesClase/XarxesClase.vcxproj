@@ -150,6 +150,9 @@
     <ClCompile Include="ConnectionAbstraction\TcpSocket.cpp" />
     <ClCompile Include="ConnectionAbstraction\TcpListener.cpp" />
     <ClCompile Include="ConnectionAbstraction\SocketSelector.cpp" />
+    <ClCompile Include="Link\Animation.cpp" />
+    <ClCompile Include="Link\LinkCharacter.cpp" />
+    <ClCompile Include="Link\Timer.cpp" />
     <ClCompile Include="WindowsHelpers\Button.cpp" />
     <ClCompile Include="WindowsHelpers\Window.cpp" />
     <ClCompile Include="XarxesClase.cpp" />
@@ -167,6 +170,9 @@
     <ClInclude Include="ConnectionAbstraction\TcpSocket.h" />
     <ClInclude Include="ConnectionAbstraction\TcpListener.h" />
     <ClInclude Include="ConnectionAbstraction\SocketSelector.h" />
+    <ClInclude Include="Link\Animation.h" />
+    <ClInclude Include="Link\LinkCharacter.h" />
+    <ClInclude Include="Link\Timer.h" />
     <ClInclude Include="WindowsHelpers\Button.h" />
     <ClInclude Include="WindowsHelpers\Window.h" />
   </ItemGroup>
