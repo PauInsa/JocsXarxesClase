@@ -9,18 +9,20 @@ UdpPacket UdpPacket::Normal(PacketKey key, ICodable& codable)
 	return newPacket;
 }
 
-UdpPacket UdpPacket::Critical(PacketKey key, ICodable& codable)
+UdpPacket UdpPacket::Critical(PacketKey key, ICodable& codable, CriticalPacketId& outId)
 {
 	UdpPacket newPacket;
 	static CriticalPacketId newId = 0;
 	newPacket << PacketType::CRITICAL << key << newId << codable;
 
+	outId = newId;
+
 	newId++;
 
-	if (newId >= 18446744073709551615)
+	/*if (newId >= 18446744073709551615)
 	{
 		newId = 0;
-	}
+	}*/
 
 	return newPacket;
 }

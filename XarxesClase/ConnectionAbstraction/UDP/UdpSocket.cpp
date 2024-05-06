@@ -54,7 +54,18 @@ UdpSocket::~UdpSocket()
 void UdpSocket::ConnectTo(UdpAddress address)
 {
 	ConnectionHandShake helloHandShake = ConnectionHandShake(GetAddress(), true);
-	SendImmediately(address, UdpPacket::Normal(0, helloHandShake));
+	UdpConnection* newConnection = new UdpConnection(this, address);
+
+	_pendantConnectionsMapMutex.lock();
+	_pendantConnectionsMap[newConnection->GetAddress().Tostring()] = newConnection;
+	_pendantConnectionsMapMutex.unlock();
+
+	newConnection->SendCritical(CONNECTIONKEY, helloHandShake, [this, newConnection](UdpPacket packet) {
+		std::string key = newConnection->GetAddress().Tostring();
+		this->_connectionsMap[key] = newConnection;
+		this->_pendantConnectionsMap.erase(key);
+		this->_onConnectionEnter(newConnection);
+	});
 }
 
 UdpAddress UdpSocket::GetAddress()
@@ -120,28 +131,45 @@ void UdpSocket::ManageReceivedPacketDone(UdpPacket packet, UdpAddress address)
 	{
 		//Connection Is New
 
-		sf::Uint8 intType;
-		UdpPacket::PacketKey key;
-		ConnectionHandShake handShake;
+		std::map<std::string, UdpConnection*>::iterator itPendant;
 
-		packet >> intType >> key >> handShake;
+		_pendantConnectionsMapMutex.lock();
+		itPendant = _pendantConnectionsMap.find(addressKey);
 
-		if (handShake.address.Tostring() == addressKey)
+		if (itPendant != _pendantConnectionsMap.end())
 		{
-			UdpConnection* newConnection = new UdpConnection(this, address);
-			_connectionsMap[addressKey] = newConnection;
-			_onConnectionEnter(newConnection);
+			itPendant->second->ManageReceivedPacket(packet);
+		}
+		else
+		{
+			sf::Uint8 intType;
+			sf::Uint8 intKey;
+			UdpPacket::CriticalPacketId id;
+			ConnectionHandShake handShake;
 
-			if (handShake.isHello)
+			packet >> intType >> intKey >> id >> handShake;
+
+			if (handShake.address.Tostring() == addressKey && handShake.isHello)
 			{
-				ConnectionHandShake welcomeHandShake = ConnectionHandShake(GetAddress(), false);
-				SendImmediately(address, UdpPacket::Normal(0, welcomeHandShake));
+				UdpConnection* newConnection = new UdpConnection(this, address);
+				_connectionsMap[addressKey] = newConnection;
 
-				//TODO Convert to Critical
+				newConnection->SubscribeOnCritical(CONNECTIONKEY, [](UdpPacket helloPacket) {
+					ConnectionHandShake handShake;
+					helloPacket >> handShake;
+					handShake.isHello = false;
+
+					return &handShake;
+				});
+
+				ConnectionHandShake welcomeHandShake = ConnectionHandShake(GetAddress(), false);
+				SendImmediately(address, UdpPacket::CriticalResponse(intKey, id, welcomeHandShake));
+
+				_onConnectionEnter(newConnection);
 			}
 		}
 
-		
+		_pendantConnectionsMapMutex.unlock();
 	}
 }
 

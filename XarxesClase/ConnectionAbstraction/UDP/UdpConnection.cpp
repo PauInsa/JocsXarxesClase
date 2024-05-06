@@ -32,8 +32,34 @@ void UdpConnection::Subscribe(UdpPacket::PacketKey key, OnReceivePacket onReceiv
 
 void UdpConnection::SubscribeAsync(UdpPacket::PacketKey key, OnReceivePacket onReceivePacket)
 {
-	std::thread* subscriveThread = new std::thread(&UdpConnection::Subscribe, this, key, onReceivePacket);
-	subscriveThread->detach();
+	std::thread* subscribeThread = new std::thread(&UdpConnection::Subscribe, this, key, onReceivePacket);
+	subscribeThread->detach();
+}
+
+void UdpConnection::SendCritical(UdpPacket::PacketKey key, ICodable& codable, OnReceiveCriticalResponsePacket onResponse)
+{
+	UdpPacket::CriticalPacketId outId;
+	UdpPacket criticalPacket = UdpPacket::Critical(key, codable, outId); //This out Id Manage, is not correct
+
+	UdpCriticalPerserverator perseverator = UdpCriticalPerserverator(criticalPacket, onResponse);
+	_criticalResponsesSubscriptionsMutex.lock();
+	_criticalResponsesSubscriptions[outId] = perseverator;
+	_criticalResponsesSubscriptionsMutex.unlock();
+
+	_delegate->SendImmediately(_address, criticalPacket);
+}
+
+void UdpConnection::SubscribeOnCritical(UdpPacket::PacketKey key, OnReceiveCriticalPacket onReceiveCriticalPacket)
+{
+	_criticalSubscriptionsMutex.lock();
+	_criticalSubscriptions[key] = onReceiveCriticalPacket;
+	_criticalSubscriptionsMutex.unlock();
+}
+
+void UdpConnection::SubscribeOnCriticalAsync(UdpPacket::PacketKey key, OnReceiveCriticalPacket onReceiveCriticalPacket)
+{
+	std::thread* subscribeThread = new std::thread(&UdpConnection::SubscribeOnCritical, this, key, onReceiveCriticalPacket);
+	subscribeThread->detach();
 }
 
 void UdpConnection::ManageReceivedPacket(UdpPacket packet)
@@ -82,12 +108,54 @@ void UdpConnection::ManageNormal(UdpPacket packet)
 
 void UdpConnection::ManageCritical(UdpPacket packet)
 {
+	UdpPacket::PacketKey key;
+	UdpPacket::CriticalPacketId id;
+	packet >> key >> id;
+
+	std::map<UdpPacket::PacketKey, OnReceiveCriticalPacket>::iterator it;
+	_criticalSubscriptionsMutex.lock();
+
+	it = _criticalSubscriptions.find(key);
+	if (it != _criticalSubscriptions.end())
+	{
+		ICodable* codableResponse = it->second(packet);
+		UdpPacket criticalResponse = UdpPacket::CriticalResponse(key, id, *codableResponse);
+		_delegate->SendImmediately(GetAddress(), criticalResponse);
+	}
+	_criticalSubscriptionsMutex.unlock();
 }
 
 void UdpConnection::ManageCriticalResponse(UdpPacket packet)
 {
+	UdpPacket::PacketKey key;
+	UdpPacket::CriticalPacketId id;
+	packet >> key >> id;
+
+	std::map<UdpPacket::CriticalPacketId, UdpCriticalPerserverator>::iterator it;
+	_criticalResponsesSubscriptionsMutex.lock();
+
+	it = _criticalResponsesSubscriptions.find(id);
+	if (it != _criticalResponsesSubscriptions.end())
+	{
+		it->second.onReceiveCriticalResponsePacket(packet);
+		_criticalResponsesSubscriptions.erase(it);
+	}
+
+	_criticalResponsesSubscriptionsMutex.unlock();
 }
 
 void UdpConnection::ManageAccumulated(UdpPacket packet)
 {
+	CPVector<UdpPacket> packets;
+	packet >> packets;
+
+	for (UdpPacket* nextPacket : packets)
+	{
+		this->ManageReceivedPacket(*nextPacket);
+	}
+
+	for (UdpPacket* nextPacket : packets)
+	{
+		delete nextPacket;
+	}
 }

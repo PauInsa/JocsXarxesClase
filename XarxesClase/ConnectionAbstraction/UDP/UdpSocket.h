@@ -23,7 +23,10 @@ private:
 	OnConnectionEnter _onConnectionEnter;
 	UdpAddress _address;
 
+	const UdpPacket::PacketKey CONNECTIONKEY = 0;
 	std::map<std::string, UdpConnection*> _connectionsMap;
+	std::map<std::string, UdpConnection*> _pendantConnectionsMap;
+	std::mutex _pendantConnectionsMapMutex;
 
 	void ReceiveLoop();
 

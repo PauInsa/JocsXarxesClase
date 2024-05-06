@@ -14,7 +14,7 @@ public:
 	};
 
 	static UdpPacket Normal(PacketKey key, ICodable& codable);
-	static UdpPacket Critical(PacketKey key, ICodable& codable);
+	static UdpPacket Critical(PacketKey key, ICodable& codable, CriticalPacketId& outId);
 	static UdpPacket CriticalResponse(PacketKey key, CriticalPacketId criticalPacketId, ICodable& codable);
 	static UdpPacket Acumulated(CPVector<UdpPacket> packetsList);
 
